@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Veil of Evermist</title>
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Georgia,serif;
+background:#05050a;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVIGATION */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 10%;
+background:rgba(5,5,10,.85);
+backdrop-filter:blur(8px);
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-right:30px;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+nav a:hover{
+color:#b4a7ff;
+}
+
+/* HERO */
+
+.hero{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+
+background:
+radial-gradient(circle at center,#1b1b35 0%,#05050a 70%);
+}
+
+.hero h1{
+
+font-size:72px;
+margin:0;
+opacity:0;
+transform:translateY(40px);
+animation:titleReveal 2s forwards;
+
+text-shadow:
+0 0 20px rgba(140,120,255,.8),
+0 0 60px rgba(120,100,255,.4);
+
+}
+
+.hero p{
+
+font-size:24px;
+color:#cfcfff;
+max-width:600px;
+
+opacity:0;
+animation:titleReveal 2s .8s forwards;
+
+}
+
+@keyframes titleReveal{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.button{
+
+display:inline-block;
+margin-top:25px;
+padding:14px 30px;
+background:#6d5dfc;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:.2s;
+
+}
+
+.button:hover{
+
+transform:scale(1.05);
+background:#8a7dff;
+
+}
+
+/* MIST LAYERS */
+
+.mist{
+
+position:fixed;
+top:0;
+left:0;
+width:200%;
+height:100%;
+pointer-events:none;
+
+background:
+radial-gradient(circle at 30% 40%,rgba(255,255,255,.06),transparent 60%),
+radial-gradient(circle at 70% 60%,rgba(255,255,255,.05),transparent 60%),
+radial-gradient(circle at 50% 50%,rgba(255,255,255,.04),transparent 70%);
+
+animation:fogMove 80s linear infinite;
+
+}
+
+.mist2{
+
+position:fixed;
+top:0;
+left:-50%;
+width:200%;
+height:100%;
+pointer-events:none;
+
+background:
+radial-gradient(circle at 20% 70%,rgba(255,255,255,.05),transparent 60%),
+radial-gradient(circle at 80% 30%,rgba(255,255,255,.04),transparent 60%);
+
+animation:fogMove2 120s linear infinite;
+
+}
+
+@keyframes fogMove{
+
+0%{transform:translateX(0)}
+100%{transform:translateX(-30%)}
+
+}
+
+@keyframes fogMove2{
+
+0%{transform:translateX(0)}
+100%{transform:translateX(30%)}
+
+}
+
+/* SECTIONS */
+
+section{
+
+padding:120px 12%;
+
+}
+
+h2{
+
+font-size:42px;
+margin-bottom:30px;
+
+}
+
+/* CARD GRID */
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+
+}
+
+.card{
+
+background:#141426;
+padding:25px;
+border-radius:10px;
+transition:.3s;
+cursor:pointer;
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,.6);
+
+}
+
+.card p{
+
+max-height:0;
+overflow:hidden;
+transition:.4s;
+
+}
+
+.card.active p{
+
+max-height:200px;
+margin-top:10px;
+
+}
+
+/* LORE PANEL */
+
+.parchment{
+
+background:#e7dcc6;
+color:#222;
+padding:40px;
+border-radius:10px;
+font-family:serif;
+
+box-shadow:0 20px 40px rgba(0,0,0,.5);
+
+}
+
+/* MAP */
+
+.map{
+
+height:420px;
+border-radius:10px;
+
+background:
+radial-gradient(circle at 40% 60%,rgba(120,120,255,.15),transparent 40%),
+#101020;
+
+position:relative;
+
+}
+
+.marker{
+
+width:14px;
+height:14px;
+background:#9a8cff;
+border-radius:50%;
+position:absolute;
+cursor:pointer;
+
+box-shadow:0 0 15px #9a8cff;
+
+}
+
+.marker:hover{
+
+transform:scale(1.5);
+
+}
+
+.marker1{top:40%;left:30%;}
+.marker2{top:55%;left:60%;}
+.marker3{top:25%;left:70%;}
+
+/* NEWSLETTER */
+
+.newsletter{
+
+background:linear-gradient(45deg,#201b40,#0b0b15);
+text-align:center;
+padding:60px;
+border-radius:10px;
+
+}
+
+input{
+
+padding:12px;
+width:250px;
+border-radius:6px;
+border:none;
+margin-right:10px;
+
+}
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+padding:40px;
+color:#777;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="mist"></div>
+<div class="mist2"></div>
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#adventures">Adventures</a>
+<a href="#lore">Lore</a>
+<a href="#map">World Map</a>
+<a href="#downloads">Downloads</a>
+<a href="#about">About</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<h1>The Veil of Evermist</h1>
+
+<p>
+A land swallowed by fog where ancient powers whisper beneath the mist.
+</p>
+
+<a class="button" href="#adventures">Enter the Mist</a>
+
+</section>
+
+<!-- ADVENTURES -->
+
+<section id="adventures">
+
+<h2>Adventures</h2>
+
+<div class="grid">
+
+<div class="card" onclick="toggleCard(this)">
+<h3>The Curse of Coral Cove</h3>
+<p>
+A haunted seaside village hides a terrible secret. Skeletal pirates search the coast for a resurrection gem while the dead refuse to rest.
+</p>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>Winter One-Shot</h3>
+<p>
+A creature misunderstood by the villagers releases spirits on the longest night of the year.
+</p>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>The Hands We're Dealt</h3>
+<p>
+A sentient playing card contains a fractured soul. Each monster represents a different identity within it.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- LORE -->
+
+<section id="lore">
+
+<h2>The World of Evermist</h2>
+
+<div class="parchment">
+
+<p>
+Evermist Isle is permanently cloaked in an unnatural fog that never lifts.
+</p>
+
+<p>
+Recently, a strange black substance has begun to spread across the island. It mutates creatures and whispers with voices that do not belong to this world.
+</p>
+
+<p>
+Something ancient is awakening beneath the mist.
+</p>
+
+</div>
+
+</section>
+
+<!-- MAP -->
+
+<section id="map">
+
+<h2>Evermist Isle</h2>
+
+<div class="map">
+
+<div class="marker marker1"></div>
+<div class="marker marker2"></div>
+<div class="marker marker3"></div>
+
+</div>
+
+</section>
+
+<!-- DOWNLOADS -->
+
+<section id="downloads">
+
+<h2>Free Downloads</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Free One-Shot</h3>
+<p>Download a free Evermist adventure.</p>
+</div>
+
+<div class="card">
+<h3>Sample Monsters</h3>
+<p>Preview creatures of Evermist.</p>
+</div>
+
+<div class="card">
+<h3>Printable Maps</h3>
+<p>Maps for your table or VTT.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="newsletter">
+
+<h2>Join the Evermist Expedition</h2>
+
+<p>
+Get free adventures, lore, and early access to new releases.
+</p>
+
+<input placeholder="Email address">
+
+<a class="button">Subscribe</a>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About the Creator</h2>
+
+<p>
+The Veil of Evermist is an independent tabletop RPG world focused on atmospheric adventures, dark mysteries, and difficult choices.
+</p>
+
+</section>
+
+<footer>
+
+<p>© The Veil of Evermist</p>
+
+</footer>
+
+<script>
+
+function toggleCard(card){
+
+card.classList.toggle("active")
+
+}
+
+</script>
+
+</body>
+</html>
